@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project  ::  django7am
+
+    </title>
+</head>
+<body>
+    <blockquote>
+        <h1>Add Students<h1>
+        {% if messages %}
+           {% for message in messages %}
+              <p style="color: #00802">{{ message}}</p>
+            {% endfor %}
+
+        {% endif %}
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="name">Name<label><br>
+            <input type="text" name="name" required id="name"><br><br>
+            <label for="email">Email<label><br>
+            <input type="text" name="email" required id="email"><br><br>
+            <label for="phone">Phone<label><br>
+            <input type="number" name="phone" required id="phone"><br><br>
+            <button>Add Records</button>
+            </form>
+            <hr>
+            <table width="100%" border="1">
+                <tr>
+                    <th>S.N.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                   
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.phone }}</td>
+                    <td></td>
+                    
+                <tr>
+                {% endfor %}
+            </table>
+    </blockquote>
+    
+</body>
+</html>
